@@ -1,46 +1,71 @@
-const startButton = document.getElementById('start-btn')
-const questionContainerElement = document.getElementById('question-conatiner')
-const questionElement = document.getElementById('question')
-const answerButtonElement = document.getElementById('answer-btn')
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-conatiner')
+var questionElement = document.getElementById('question')
+var answerButtonElement = document.getElementById('answer-btn')
+var askindex , currentQuestionIndex = 0 ;
 
 
-
-
-startButton.addEventListener('click', startGame)
 
 
 function startGame(){
   //when start btn is clicked
-  console.log('started')
+ 
   startButton.classList.add('hide')
   
- 
+  
   questionContainerElement.classList.remove('hide')
-  setNextQuestion()
-
+  nextButton.classList.remove('hide')
+  showQuestion()
+  
 }
 
 
-function setNextQuestion(){
-  //when next btn is clicked
 
-  //function for showing question
-  showQuestion(shufflesQuestions[currentQuestionIndex])
+ 
+  // showQuestion()
+
+
+function showQuestion(){
+  //grab question syick into div
+  var quest = question[currentQuestionIndex].q;
+  questionElement.innerText = quest;
+
+  for(var i=0; i <question[currentQuestionIndex].answers.length; i++ ){
+    
+
+    ansrButn = question[currentQuestionIndex].answers[i].text
+
+    var Btns = document.createElement("button");
+    Btns.innerText = ansrButn
+    answerButtonElement.appendChild(Btns);
+    Btns.setAttribute('class', 'btn');
+    
+
+     
+   
+  
+  }
+
+  
+  
 }
 
-function showQuestion(question){
-  questionElement.innerText = question.q
 
-}
 
 function SelectAnswer(){
   //what hapens when answer is selected
+
+  //if answer is true
+  //count++
+  //else non
+
 }
 
 
 
 
-const question =[
+var question =[
   {
     q : "what is 2+2",
     answers : [
@@ -48,6 +73,9 @@ const question =[
       {text : 56 , correct : false }
     ]
   }
+  
+
+  
 ]
 
 
@@ -60,6 +88,8 @@ const question =[
 
 
 
+
+startButton.addEventListener('click', startGame)
 
 
 
